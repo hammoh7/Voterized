@@ -1,0 +1,40 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom styles */
+@layer base {
+  body {
+    @apply bg-gradient-to-r from-blue-500 to-purple-500 text-white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-300;
+  }
+
+  .btn-danger {
+    @apply px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition-colors duration-300;
+  }
+
+  .card {
+    @apply bg-white p-4 rounded-lg shadow-md;
+  }
+
+  .card-title {
+    @apply text-2xl font-bold mb-4 text-blue-500;
+  }
+
+  .nav-link {
+    @apply px-4 py-2 rounded-md transition-colors duration-300;
+  }
+
+  .nav-link.active {
+    @apply bg-white text-blue-500;
+  }
+
+  .nav-link:not(.active) {
+    @apply bg-blue-500 text-white hover:bg-blue-600;
+  }
+}
