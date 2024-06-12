@@ -1,3 +1,4 @@
+/* Tailwind base, components, and utilities */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
@@ -10,20 +11,24 @@
 }
 
 @layer components {
-  .btn-primary {
-    @apply px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-300;
+  .navbar {
+    @apply flex justify-between items-center px-4 py-2 bg-blue-800;
   }
 
-  .btn-danger {
-    @apply px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition-colors duration-300;
+  .logo-container {
+    @apply flex items-center;
   }
 
-  .card {
-    @apply bg-white p-4 rounded-lg shadow-md;
+  .logo {
+    @apply h-12 mr-2;
   }
 
-  .card-title {
-    @apply text-2xl font-bold mb-4 text-blue-500;
+  .app-title {
+    @apply text-2xl font-bold;
+  }
+
+  .nav-links {
+    @apply flex space-x-4;
   }
 
   .nav-link {
@@ -36,5 +41,69 @@
 
   .nav-link:not(.active) {
     @apply bg-blue-500 text-white hover:bg-blue-600;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-300;
+  }
+
+  .btn-danger {
+    @apply px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition-colors duration-300;
+  }
+
+  .card {
+    @apply bg-white p-4 rounded-lg shadow-md overflow-auto;
+  }
+
+  .card-title {
+    @apply text-2xl font-bold mb-4 text-blue-500;
+  }
+
+  .loading-container,
+  .error-container {
+    @apply flex justify-center items-center min-h-[100px];
+  }
+
+  .vote-button-container {
+    @apply flex justify-center my-8;
+  }
+
+  .vote-button {
+    @apply btn-primary text-lg font-semibold px-8 py-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+  }
+
+  .footer {
+    @apply bg-blue-800 py-4 mt-auto;
+  }
+
+  .footer-content {
+    @apply container mx-auto px-4 flex justify-between items-center;
+  }
+
+  .footer-links {
+    @apply flex space-x-4;
+  }
+
+  .footer-links a {
+    @apply text-gray-300 hover:text-white transition-colors duration-300;
+  }
+
+  /* Additional custom styles */
+  .main-container {
+    @apply flex flex-col items-center;
+    max-height: calc(100vh - 4rem); /* Adjust for header/footer */
+    overflow-y: auto;
+  }
+
+  .proposals-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6;
+    width: 100%;
+  }
+
+  .proposal-button {
+    @apply py-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+    width: 100%;
+    max-width: 200px;
+    margin: auto;
   }
 }
