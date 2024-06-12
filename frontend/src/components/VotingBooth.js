@@ -86,34 +86,26 @@ const VotingBooth = ({ contract, address }) => {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="card">
-        <p className="text-center text-gray-700">Loading proposals...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="card">
-        <p className="text-center text-red-700">{error}</p>
-      </div>
-    );
-  }
-
   return (
-    <div className="card">
-      <h2 className="card-title">Cast Your Vote</h2>
-      {proposals.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div className="card main-container">
+      <h2 className="card-title text-center">Cast Your Vote</h2>
+      {loading ? (
+        <div className="loading-container">
+          <p className="text-center text-gray-700">Loading proposals...</p>
+        </div>
+      ) : error ? (
+        <div className="error-container">
+          <p className="text-center text-red-700">{error}</p>
+        </div>
+      ) : proposals.length > 0 ? (
+        <div className="proposals-grid">
           {proposals.map((proposal) => (
             <button
               key={proposal.id}
               onClick={() => handleVote(proposal.id)}
-              className="btn-primary"
+              className="btn-primary proposal-button"
             >
-              {proposal.name}
+              <span className="text-lg font-semibold">{proposal.name}</span>
             </button>
           ))}
         </div>
