@@ -12,45 +12,28 @@ const VotingBooth = ({ contract, address }) => {
           setLoading(true);
           setError(null);
 
-          console.log("Fetching voter information for address:", address);
-
-          // Check if the voter has the right to vote
           const voter = await contract.voters(address);
-          console.log("Voter:", voter);
-
-          const weight = voter.weight.toString(); // Convert BigInt to string
-          console.log("Voter weight:", weight);
+          const weight = voter.weight.toString();
 
           if (weight === "0") {
-            setError(
-              "You don't have the right to vote. Please contact the chairperson."
-            );
+            setError("You don't have the right to vote. Please contact the chairperson.");
             setLoading(false);
             return;
           }
 
-          console.log("Fetching the proposals...");
-
-          // Fetch the number of proposals
           const proposalCount = await contract.proposalCount();
-          console.log("Number of proposals:", proposalCount.toString());
-
           if (proposalCount.toString() === "0") {
             setError("No proposals have been added yet.");
             setLoading(false);
             return;
           }
 
-          console.log("Fetching each proposal...");
-
-          // Fetch each proposal
           const fetchedProposals = [];
           for (let i = 0; i < proposalCount; i++) {
-            const proposal = await contract.proposals(i); // Call the function with an index
-            console.log(`Proposal ${i}:`, proposal);
+            const proposal = await contract.proposals(i);
             fetchedProposals.push({
               id: i,
-              name: proposal.name.replace(/\0/g, ""), // Remove padding
+              name: proposal.name.replace(/\0/g, ""),
             });
           }
 
@@ -75,9 +58,7 @@ const VotingBooth = ({ contract, address }) => {
     } catch (err) {
       console.error("Error voting:", err);
       if (err.message.includes("Has no right to vote")) {
-        alert(
-          "You don't have the right to vote. Please contact the chairperson."
-        );
+        alert("You don't have the right to vote. Please contact the chairperson.");
       } else if (err.message.includes("Already voted")) {
         alert("You have already cast your vote.");
       } else {
@@ -98,19 +79,21 @@ const VotingBooth = ({ contract, address }) => {
           <p className="text-center text-red-700">{error}</p>
         </div>
       ) : proposals.length > 0 ? (
-        <div className="proposals-grid">
+        <div className="proposals-container">
           {proposals.map((proposal) => (
-            <button
-              key={proposal.id}
-              onClick={() => handleVote(proposal.id)}
-              className="btn-primary proposal-button"
-            >
-              <span className="text-lg font-semibold">{proposal.name}</span>
-            </button>
+            <div key={proposal.id} className="proposal-card">
+              <h3 className="proposal-name">{proposal.name}</h3>
+              <button
+                onClick={() => handleVote(proposal.id)}
+                className="btn-primary proposal-button"
+              >
+                Vote
+              </button>
+            </div>
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-700">No proposals available.</p>
+        <p className="text-center text-gray-700">Connect your Wallet</p>
       )}
     </div>
   );
