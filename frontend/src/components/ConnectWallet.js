@@ -1,5 +1,38 @@
-import { useState, useEffect } from 'react';
-import { ethers } from 'ethers';
+import { useState, useEffect } from "react";
+import { ethers } from "ethers";
+
+const UserMenu = ({ address, onDisconnect }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const handleDisconnect = () => {
+    setMenuOpen(false);
+    localStorage.removeItem('walletAddress');
+    onDisconnect();
+  };
+
+  return (
+    <div className="relative">
+      <button onClick={toggleMenu} className="flex items-center px-4 py-2 text-white">
+        <img src="/user-icon.png" alt="User Icon" className="h-6 w-6 rounded-full" />
+      </button>
+      {menuOpen && (
+        <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
+          <div className="px-4 py-2 text-sm text-gray-700">Address: {address}</div>
+          <button
+            onClick={handleDisconnect}
+            className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+          >
+            Disconnect
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const ConnectWallet = ({ onConnect, onDisconnect }) => {
   const [isConnecting, setIsConnecting] = useState(false);
@@ -50,24 +83,10 @@ const ConnectWallet = ({ onConnect, onDisconnect }) => {
     connectWithMetamask();
   };
 
-  const handleDisconnect = () => {
-    setAddress(null);
-    localStorage.removeItem('walletAddress');
-    onDisconnect();
-  };
-
   return (
     <div className="flex justify-center my-4">
       {address ? (
-        <div className="bg-white text-blue-500 p-4 rounded-md shadow-md">
-          <p className="font-mono">Connected as: {address}</p>
-          <button
-            onClick={handleDisconnect}
-            className="mt-2 px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition-colors duration-300"
-          >
-            Disconnect Wallet
-          </button>
-        </div>
+        <UserMenu address={address} onDisconnect={onDisconnect} />
       ) : isConnecting ? (
         <div className="flex items-center">
           <p className="mr-2">Connecting...</p>
