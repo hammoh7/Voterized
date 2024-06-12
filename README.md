@@ -34,7 +34,13 @@
    ```
    REACT_APP_CONTRACT_ADDRESS=
    ```
-5. Then start the application
+5. Create a new file contractABI.js in frontend/src folder. Then copy the ABI content (array) from artifacts/contracts/Voting.json. The contractABI.js file should be like as below:
+   ```
+   export const contractABI = [
+      // Your ABI content
+   ]
+   ```
+6. Then start the application
    ```
    cd frontend
    npm start
