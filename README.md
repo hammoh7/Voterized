@@ -1,7 +1,6 @@
 # Voterized 
 ## Decentralized Voting application
-### Voterized is a decentralized voting application where a chairperson can give rights to particular voters by entering their voting addresses. These voters with allocated rights can then vote to their favourite party.<br>The results of the winning parties are also seen in real-time.
-
+### Voterized is a decentralized voting application where a Chairperson can give rights to for voters to vote by entering their voting addresses. These voters with allocated rights can then vote to their favourite party. The results of the winning parties are also seen in real-time.
 
 ### Steps to Setup
 
