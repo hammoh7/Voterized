@@ -52,7 +52,8 @@
   }
 
   .card {
-    @apply bg-white p-4 rounded-lg shadow-md overflow-auto;
+    @apply bg-white p-4 rounded-lg shadow-md;
+    position: relative;
   }
 
   .card-title {
@@ -95,15 +96,26 @@
     overflow-y: auto;
   }
 
-  .proposals-grid {
-    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6;
+  .proposals-container {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6;
     width: 100%;
   }
 
+  .proposal-card {
+    @apply bg-white text-black p-4 rounded-lg shadow-md flex flex-col items-center justify-between;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .proposal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .proposal-name {
+    @apply text-lg font-semibold mb-4;
+  }
+
   .proposal-button {
-    @apply py-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
-    width: 100%;
-    max-width: 200px;
-    margin: auto;
+    @apply px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-300;
   }
 }
