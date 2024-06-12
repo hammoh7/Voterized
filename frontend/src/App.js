@@ -9,7 +9,7 @@ import VotingBooth from "./components/VotingBooth";
 import Results from "./components/Results";
 import ChairpersonPanel from "./components/ChairpersonPanel";
 import { contractABI } from "./contractABI";
-import UserMenu from "./components/UserMenu"; // import UserMenu component
+import UserMenu from "./components/UserMenu"; 
 
 const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
 
@@ -80,7 +80,7 @@ function App() {
             )}
           </nav>
           {address ? (
-            <UserMenu address={address} onDisconnect={handleDisconnect} /> // Use UserMenu component here
+            <UserMenu address={address} onDisconnect={handleDisconnect} />
           ) : (
             <ConnectWallet onConnect={handleConnect} onDisconnect={handleDisconnect} />
           )}
