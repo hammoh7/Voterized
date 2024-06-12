@@ -41,7 +41,7 @@ const Results = ({ contract }) => {
           ))}
         </div>
       ) : (
-        <p className="text-gray-700">No results available.</p>
+        <p className="text-gray-700">Connect wallet</p>
       )}
     </div>
   );
