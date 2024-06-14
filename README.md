@@ -46,6 +46,8 @@
    npm start
    ```
 
+## Note - This project works only on SepoliaETH test network
+
 
 ## Simulation of application
 
