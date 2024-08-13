@@ -46,4 +46,13 @@
    npm start
    ```
 
+## Note - This project works only on SepoliaETH test network
+
+
+## Simulation of application
+
+- The private key of your wallet which you provided in your code, is your Chairperson wallet. Only that particular wallet will have the Chairperson authority
+- With that Chairperson wallet you have the authority to give voting rights to any other person by entering their wallet addresses.
+- Then those voters having voting rights can vote to their favorite party.
+
    
